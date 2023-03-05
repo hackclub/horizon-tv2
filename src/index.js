@@ -6,12 +6,9 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server);
 
-
-
-let color = "black";
+let color = "#005640";
 
 io.on("connection", (socket) => {
-  socket.emit("color", color);
 
   socket.on("emoji", (emoji) => {
     socket.broadcast.emit("emoji", emoji);

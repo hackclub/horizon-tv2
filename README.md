@@ -1,11 +1,8 @@
-# assemble tv thing
+# horizon tv thing
 
-code powering the lobby TV for [Assemble](https://assemble.hackclub.com).
+forked from [Assemble](https://assemble.hackclub.com) tv thing 
 
-![](https://cloud-jmau183zw-hack-club-bot.vercel.app/0img_20220805_193418891.jpg)
-^ this is when it got hacked
-
-(don't have any better photos)
+for the GSGNY x Hack Club event!!!
 
 ## how to run
 

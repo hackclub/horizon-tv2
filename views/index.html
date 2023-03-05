@@ -9,12 +9,13 @@
       rel="stylesheet"
     />
     <style>
+      @font-face { font-family: BLMelody-Medium; src: url('../fonts/BLMelody-Medium.woff'); } 
       * {
-        font-family: "Space Grotesk", sans-serif;
+        font-family: BLMelody-Medium, sans-serif;
       }
 
       body {
-        background-color: black;
+        background-color: #005640;
       }
 
       .color {
@@ -22,6 +23,11 @@
         height: 50px;
         border-radius: 50%;
         border: 3px solid white;
+      }
+
+      .cookie img {
+        width: 60px;
+        height: 60px;
       }
     </style>
   </head>
@@ -37,8 +43,8 @@
     >
       <div
         class="color"
-        data-color="black"
-        style="background-color: black"
+        data-color="#005640"
+        style="background-color: #005640"
       ></div>
       <div
         class="color"
@@ -60,6 +66,33 @@
         data-color="#33d6a6"
         style="background-color: #33d6a6"
       ></div>
+    </div>
+    <!-- Pick a cookie -->
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+      "
+    >
+      <div
+        class="cookie"   
+      >
+      <img src="https://cloud-emfyqm8qq-hack-club-bot.vercel.app/0meetthecookies-graphics-hybridshortbreadtrefoils-255x255-removebg-preview.png">
+    </div>
+      <div
+        class="cookie"
+      ><img src="https://cloud-bhqeopk9o-hack-club-bot.vercel.app/0meetthecookies-graphics-hybridthinmints-255x255-removebg-preview.png"></div>
+      <div
+        class="cookie"
+      ><img src="https://cloud-7mz9k98s6-hack-club-bot.vercel.app/0meetthecookies-graphics-hybrid-raspberryrally-255x255-removebg-preview.png"></div>
+      <div
+        class="cookie"
+      ><img src="https://cloud-jg0f0l7o3-hack-club-bot.vercel.app/0meetthecookies-graphics-hybridsamoascarameldelites-255x255-removebg-preview.png"></div>
+      <div
+        class="cookie"
+      ><img src="https://cloud-hq85263e2-hack-club-bot.vercel.app/0meetthecookies-graphics-hybridadventurefuls-255x255-removebg-preview.png"></div>
     </div>
 
     <form id="message">
