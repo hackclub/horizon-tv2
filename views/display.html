@@ -18,10 +18,11 @@
     </style>
   </head>
   <body>
+    <canvas id="cookie-canvas" style="position: fixed"></canvas>
     <div style="display: flex; align-items: center; justify-content: center">
       <img
         style="width: 25vw; border-radius: 2vw"
-        src="https://cloud-o1jmxy3ys-hack-club-bot.vercel.app/0qr-code__2_.png"
+        src="https://cloud-ng371rwlp-hack-club-bot.vercel.app/0frame.png"
       />
 
       <div
@@ -33,10 +34,10 @@
           margin-left: 4vw;
         "
       >
-        <h2 style="font-weight: normal; font-size: 4vw; margin-bottom: -2vw">
+        <h2 style="font-weight: normal; font-size: 5vw; margin-bottom: -2vw">
           Welcome to
         </h2>
-        <h1 style="font-size: 13vw; color: #f7be00; text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgb(0 0 0 / 10%), 0 0 5px rgb(0 0 0 / 10%), 0 1px 3px rgb(0 0 0 / 30%), 0 3px 5px rgb(0 0 0 / 20%), 0 5px 10px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 20%), 0 20px 20px rgb(0 0 0 / 15%); -webkit-text-stroke: 3px #fff">
+        <h1 style="font-size: 15vw; color: #f7be00; text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgb(0 0 0 / 10%), 0 0 5px rgb(0 0 0 / 10%), 0 1px 3px rgb(0 0 0 / 30%), 0 3px 5px rgb(0 0 0 / 20%), 0 5px 10px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 20%), 0 20px 20px rgb(0 0 0 / 15%); -webkit-text-stroke: 3px #fff">
           Horizon
         </h1>
       </div>
@@ -73,10 +74,21 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@latest"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       const socket = io();
       const jsConfetti = new JSConfetti();
+      const jsConfetti2 = new JSConfetti();
+      // Default canvas
+      var canvasSettings = {
+          target: 'cookie-canvas',
+          max: 100,
+          props: ['square'],
+          colors: [[80,80,80]],
+          clock: 5
+          };
+      var canvas = new ConfettiGenerator(canvasSettings);
 
       socket.on("refresh", () => {
         location.reload();
@@ -86,6 +98,72 @@
         jsConfetti.addConfetti({
           emojis: [emoji],
         });
+      });
+
+      socket.on("cookie", (cookie) => {
+        if (cookie === "adventures") {
+          canvas.clear();
+          var canvas1Settings = {
+            target: 'cookie-canvas',
+            max: 50,
+            props: [{ "type": "svg", "src": "../public/adventures.svg", "size":"35"}],
+            rotate: true,
+            respawn: false,
+            clock: 20
+          };
+          canvas = new ConfettiGenerator(canvas1Settings);
+          canvas.render();
+        } else if (cookie === "rally") {
+          canvas.clear();
+          var canvas1Settings = {
+            target: 'cookie-canvas',
+            max: 50,
+            props: [{ "type": "svg", "src": "../public/rally.svg", "size":"35"}],
+            rotate: true,
+            respawn: false,
+            clock: 20
+          };
+          canvas = new ConfettiGenerator(canvas1Settings);
+          canvas.render();
+        } else if (cookie === "trefoil") {
+          canvas.clear();
+          var canvas1Settings = {
+            target: 'cookie-canvas',
+            max: 50,
+            props: [{ "type": "svg", "src": "../public/trefoils.svg", "size":"35"}],
+            rotate: true,
+            respawn: false,
+            clock: 20
+          };
+          canvas = new ConfettiGenerator(canvas1Settings);
+          canvas.render();
+        } else if (cookie === "mints") {
+          canvas.clear();
+          var canvas1Settings = {
+            target: 'cookie-canvas',
+            max: 50,
+            props: [{ "type": "svg", "src": "../public/thinmints.svg", "size":"35"}],
+            rotate: true,
+            respawn: false,
+            clock: 20
+          };
+          canvas = new ConfettiGenerator(canvas1Settings);
+          canvas.render();
+        } else if (cookie === "samoas") {
+          canvas.clear();
+          var canvas1Settings = {
+            target: 'cookie-canvas',
+            max: 50,
+            props: [{ "type": "svg", "src": "../public/samoas.svg", "size":"35"}],
+            rotate: true,
+            respawn: false,
+            clock: 20
+          };
+          canvas = new ConfettiGenerator(canvas1Settings);
+          canvas.render();
+        }
+        
+          
       });
 
       let timeout;

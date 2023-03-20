@@ -14,6 +14,10 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("emoji", emoji);
   });
 
+  socket.on("cookie", (cookie) => {
+    socket.broadcast.emit("cookie", cookie);
+  });
+
   socket.on("color", (selectedColor) => {
     color = selectedColor;
     socket.broadcast.emit("color", selectedColor);
@@ -33,6 +37,7 @@ io.on("connection", (socket) => {
 });
 
 app.use('/fonts', express.static('fonts'))
+app.use('/public', express.static('public'))
 
 app.get("/", (req, res) => {
   res.sendFile("index.html", { root: "./views" });

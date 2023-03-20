@@ -33,40 +33,7 @@
   </head>
   <body>
     <div id="emojis"></div>
-    <div
-      style="
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 20px;
-      "
-    >
-      <div
-        class="color"
-        data-color="#005640"
-        style="background-color: #005640"
-      ></div>
-      <div
-        class="color"
-        data-color="#B14134"
-        style="background-color: #b14134"
-      ></div>
-      <div
-        class="color"
-        data-color="#a633d6"
-        style="background-color: #a633d6"
-      ></div>
-      <div
-        class="color"
-        data-color="#338eda"
-        style="background-color: #338eda"
-      ></div>
-      <div
-        class="color"
-        data-color="#33d6a6"
-        style="background-color: #33d6a6"
-      ></div>
-    </div>
+    
     <!-- Pick a cookie -->
     <div
       style="
@@ -77,24 +44,65 @@
       "
     >
       <div
-        class="cookie"   
+        class="cookie"
+        data-cookie="trefoil"   
       >
       <img src="https://cloud-emfyqm8qq-hack-club-bot.vercel.app/0meetthecookies-graphics-hybridshortbreadtrefoils-255x255-removebg-preview.png">
     </div>
       <div
         class="cookie"
+        data-cookie="mints"
       ><img src="https://cloud-bhqeopk9o-hack-club-bot.vercel.app/0meetthecookies-graphics-hybridthinmints-255x255-removebg-preview.png"></div>
       <div
         class="cookie"
+        data-cookie="rally"
       ><img src="https://cloud-7mz9k98s6-hack-club-bot.vercel.app/0meetthecookies-graphics-hybrid-raspberryrally-255x255-removebg-preview.png"></div>
       <div
         class="cookie"
-      ><img src="https://cloud-jg0f0l7o3-hack-club-bot.vercel.app/0meetthecookies-graphics-hybridsamoascarameldelites-255x255-removebg-preview.png"></div>
+        data-cookie="samoas"
+      >
+      <img src="https://cloud-jg0f0l7o3-hack-club-bot.vercel.app/0meetthecookies-graphics-hybridsamoascarameldelites-255x255-removebg-preview.png">
+    </div>
       <div
         class="cookie"
+        data-cookie="adventures"
       ><img src="https://cloud-hq85263e2-hack-club-bot.vercel.app/0meetthecookies-graphics-hybridadventurefuls-255x255-removebg-preview.png"></div>
     </div>
-
+    <!-- Color picker -->
+    <div
+    style="
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    "
+  >
+    <div
+      class="color"
+      data-color="#005640"
+      style="background-color: #005640"
+    ></div>
+    <div
+      class="color"
+      data-color="#f7be00"
+      style="background-color: #f7be00"
+    ></div>
+    <div
+      class="color"
+      data-color="#7A4E15"
+      style="background-color: #7A4E15"
+    ></div>
+    <div
+      class="color"
+      data-color="#dda15e"
+      style="background-color: #dda15e"
+    ></div>
+    <div
+      class="color"
+      data-color="#f9a620"
+      style="background-color: #f9a620"
+    ></div>
+  </div>
     <form id="message">
       <input
         type="text"
@@ -118,6 +126,7 @@
     <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
+      
       const socket = io();
 
       const picker = new EmojiMart.Picker({
@@ -129,8 +138,8 @@
       picker.style.margin = "0 auto";
 
       document.getElementById("emojis").appendChild(picker);
-
       const colors = document.getElementsByClassName("color");
+
       for (let i = 0; i < colors.length; i++) {
         const element = colors[i];
 
@@ -138,6 +147,16 @@
           const { color } = this.dataset;
 
           socket.emit("color", color);
+        });
+      }
+
+      const cookies = document.getElementsByClassName("cookie");
+      for (let i = 0; i < cookies.length; i++) {
+        const element = cookies[i];
+
+        element.addEventListener("click", function () {
+          const { cookie } = this.dataset;
+          socket.emit("cookie", cookie);
         });
       }
 
